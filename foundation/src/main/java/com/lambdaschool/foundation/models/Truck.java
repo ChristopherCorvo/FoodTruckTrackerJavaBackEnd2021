@@ -39,12 +39,12 @@ public class Truck
         allowSetters = true)
     private List<MenuItem> menuItems = new ArrayList<>();
 
-    @OneToMany(mappedBy = "truck",
-    cascade = CascadeType.ALL,
-    orphanRemoval = true)
-    @JsonIgnoreProperties(value = "truck",
-    allowSetters = true)
-    private List<MyTruckList> mytrucklist = new ArrayList<>();
+//    @OneToMany(mappedBy = "truck",
+//    cascade = CascadeType.ALL,
+//    orphanRemoval = true)
+//    @JsonIgnoreProperties(value = "truck",
+//    allowSetters = true)
+//    private List<MyTruckList> mytrucklist = new ArrayList<>();
 
     // ------------ Constructors ---------------------
     public Truck()
@@ -164,13 +164,13 @@ public class Truck
         this.menuItems = menuItems;
     }
 
-    public List<MyTruckList> getMytrucklist()
-    {
-        return mytrucklist;
-    }
-
-    public void setMytrucklist(List<MyTruckList> mytrucklist)
-    {
-        this.mytrucklist = mytrucklist;
-    }
+//    public List<MyTruckList> getMytrucklist()
+//    {
+//        return mytrucklist;
+//    }
+//
+//    public void setMytrucklist(List<MyTruckList> mytrucklist)
+//    {
+//        this.mytrucklist = mytrucklist;
+//    }
 }
