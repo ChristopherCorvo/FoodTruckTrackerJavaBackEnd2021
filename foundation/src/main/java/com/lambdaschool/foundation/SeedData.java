@@ -10,6 +10,7 @@ import com.lambdaschool.foundation.services.TruckService;
 import com.lambdaschool.foundation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +23,14 @@ import java.util.Locale;
  * CoomandLineRunner: Spring Boot automatically runs the run method once and only once
  * after the application context has been loaded.
  */
+
 @Transactional
+@ConditionalOnProperty(
+    prefix = "command.line.runner",
+    value = "enabled",
+    havingValue = "true",
+    matchIfMissing = true
+)
 @Component
 public class SeedData
     implements CommandLineRunner
@@ -276,11 +284,11 @@ public class SeedData
         u3.getUseremails()
             .add(new Useremail(u3,
                 "barnbarn@email.local"));
-        u2.getMytrucklist()
+        u3.getMytrucklist()
             .add(new MyTruckList(u3, t1));
-        u2.getMytrucklist()
+        u3.getMytrucklist()
             .add(new MyTruckList(u3, t2));
-        u2.getMytrucklist()
+        u3.getMytrucklist()
             .add(new MyTruckList(u3, t3));
 
         userService.save(u3);

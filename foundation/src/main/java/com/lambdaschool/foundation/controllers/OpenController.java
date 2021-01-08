@@ -73,8 +73,31 @@ public class OpenController
 
         // add the default role of user
         Set<UserRoles> newRoles = new HashSet<>();
-        newRoles.add(new UserRoles(newuser,
-            roleService.findByName(roleName))); // look at later
+
+        //Create admin, diner, truckoperator roles
+        UserRoles adminRole = new UserRoles(newuser,
+            roleService.findByName("admin"));
+        UserRoles truckOperatorRole = new UserRoles(newuser,
+            roleService.findByName("truckoperator"));
+        UserRoles dinerRole = new UserRoles(newuser,
+            roleService.findByName("diner"));
+
+        // Use the path variable entered by front end to add the appropriate role to a User obj
+        switch (roleName) {
+            case "admin":
+                newRoles.add(adminRole);
+                break;
+            case "truckoperator":
+                newRoles.add(truckOperatorRole);
+                break;
+            case "diner":
+                newRoles.add(dinerRole);
+                    break;
+        }
+
+//        newRoles.add(new UserRoles(newuser,
+//            roleService.findByName(roleName))); // look at later
+
         newuser.setRoles(newRoles);
 
         newuser = userService.save(newuser);

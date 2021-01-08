@@ -101,6 +101,9 @@ public class ResourceServerConfig
             .antMatchers(HttpMethod.POST,
                 "/trucks/**")
             .hasAnyRole("TRUCKOPERATOR","ADMIN")
+            .antMatchers(HttpMethod.PATCH,
+                "/users/**")
+            .hasAnyRole("TRUCKOPERATOR","DINER","ADMIN")
             .antMatchers(HttpMethod.DELETE,
                 "/users/**")
             .hasAnyRole("ADMIN")

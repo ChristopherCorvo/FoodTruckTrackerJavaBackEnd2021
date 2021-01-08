@@ -111,7 +111,7 @@
     </dependencies>
 
     <build>
-        <finalName>jrmmba-stumps</finalName>
+        <finalName>ccorvo-foodtruck-tracker-2021</finalName>
 
         <plugins>
             <plugin>

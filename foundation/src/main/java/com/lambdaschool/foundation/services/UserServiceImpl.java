@@ -125,7 +125,7 @@ public class UserServiceImpl
         }
 
         // added 1/5/2021 3:14pm
-       // replicate for user roles line 104
+        // replicate for user roles line 104
         // Need to ask John about this code
         newUser.getMytrucklist()
             .clear();
@@ -169,6 +169,22 @@ public class UserServiceImpl
                 currentUser.setPrimaryemail(user.getPrimaryemail()
                     .toLowerCase());
             }
+
+            // added 1/6/2020 7:57pm
+            if (user.getMytrucklist()
+                .size() > 0)
+            {
+                currentUser.getMytrucklist()
+                    .clear();
+                for (MyTruckList mtl : user.getMytrucklist())
+                {
+                    Truck addTruck = truckService.findTruckById(mtl.getTruck()
+                        .getTruckid());
+                    currentUser.getMytrucklist()
+                        .add(new MyTruckList(currentUser, addTruck));
+                }
+            }
+
 
             if (user.getRoles()
                 .size() > 0)

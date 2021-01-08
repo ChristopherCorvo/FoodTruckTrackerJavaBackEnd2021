@@ -1,0 +1,93 @@
+FoodTruck Tracker Java Back End: 
+
+Root URL: http://ccorvo-foodtruck-tracker-2021.herokuapp.com 
+
+GitHub Template for connecting JavaScript FrontEnd to Java Back End: https://github.com/LambdaSchool/java-js-front-end
+
+3 Roles:
+	1. admin
+	2. truckoperator
+	3. diner
+
+Fake User Accounts:
+Admin account:
+username: admin
+password: password
+
+TruckOperator account:
+username: TruckOperator
+password: TruckOperator
+
+Diner account:
+username: TestDiner
+password: password
+
+
+Pure User Obj:
+
+{
+    "username": String
+    "primaryemail": String,
+    "password": String,
+    "userLongitude": String,
+    "userLatitude": String,
+}
+
+Endpoint to create a newUser with role:
+
+	*** POST: /createnewuser/{roleName}
+
+User Endpoints: 
+
+	** An Admin role can: 
+	GET: /users/users = Returns a list of all users
+	GET: /users/user/{userId} = Returns a single user based off a user id number
+	GET: /users/user/name/{userName} = Return a user object based on a given username
+	GET: /users/user/name/like/{userNameLike} = Returns a list of users whose username contains the given substring 
+	DELETE: /users/user/{id}
+
+	** Create a NewUser:
+	POST: /users/user
+
+	** Replace a User Object:
+	PUT: /users/user/{userid}
+
+	** Updates the user record associated with the given id with the provided data. Only the provided fields are affected.
+	PATCH:  /users/user/{id}
+
+	Return a users info:
+	Note: Returns the User record for the currently authenticated user based off of the supplied access token
+	GET: /users/getuserinfo
+
+
+Pure Truck Obj: 
+
+{
+        "name": String,
+        "imageOfTruck": String,
+        "cuisineType": String,
+        "truckLongitude": String,
+        "truckLatitude": String,
+        "departureTime": String,
+        "customerRatingAvg": Integer,
+}
+
+
+Truck Endpoints: 
+
+	** An Admin, TruckOperator, or Diner can:
+
+	GET: /trucks/trucks = Return a list of all Truck Objs
+	GET: /trucks/truck/{truckid} = Return a Truck Obj based off a Truck id number
+	GET: /trucks/truck/name/{truckName} = Return a Truck obj by a given name
+	GET: /trucks/trucks/namelike/{truckNameSubString} = Return a list of Truck Objs that contain a given substring.
+	GET: /trucks/trucks/cuisinetype/{cuisinetype} = Return a list of Truck Objs that have the same cuisinetype
+
+	** Only TruckOperators can:
+	POST: /trucks/truck = create a new Truck Obj
+	PUT: /trucks/truck/{truckid} = Replace a Truck Obj by a given Id
+	DELETE: /trucks/truck/{truckid} = Delete a truck obj by a given id
+
+
+
+
